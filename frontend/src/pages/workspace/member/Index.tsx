@@ -31,11 +31,12 @@ function MemberIndex() {
 		hasNextPage,
 	} = useGetWorkspaceUserListQuery(workspace?.id);
 	const [memberModalOpen, setMemberModalOpen] = useState(false);
+
 	const userList = useMemo(() => {
 		return (
 			workspaceUserPageList?.pages.reduce((prev, page) => {
 				return prev.concat(page.workspaceUsers);
-			}, [] as Array<User>) ?? []
+			}, [] as User[]) ?? []
 		);
 	}, [workspaceUserPageList?.pages]);
 
@@ -50,7 +51,7 @@ function MemberIndex() {
 					<Typography variant="h5" fontWeight="bold">
 						{workspace?.title}{" "}
 						<Typography component="span" variant="inherit" color="primary">
-							{workspaceUserPageList?.pages[0].workspaceUsers.length}
+							{userList.length}
 						</Typography>
 					</Typography>
 					<Button
@@ -69,7 +70,7 @@ function MemberIndex() {
 						hasMore={hasNextPage}
 						loader={
 							<Box className="loader" key={0}>
-								<CircularProgress size="sm" />
+								<CircularProgress size={20} />
 							</Box>
 						}
 						useWindow={false}
