@@ -20,6 +20,10 @@ function CallbackIndex() {
 
 		dispatch(setAccessToken(accessToken));
 		dispatch(setRefreshToken(refreshToken));
+
+		const redirect = sessionStorage.getItem("redirect") || "/";
+		sessionStorage.removeItem("redirect");
+		navigate(redirect);
 	}, [dispatch, navigate, searchParams]);
 
 	return <Box></Box>;
