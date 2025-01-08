@@ -1,3 +1,7 @@
+import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
+import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
+import PeopleIcon from "@mui/icons-material/People";
+import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
 import {
 	Box,
 	Collapse,
@@ -7,16 +11,12 @@ import {
 	ListItemText,
 	Paper,
 } from "@mui/material";
-import { useDispatch } from "react-redux";
 import { useMemo, useState } from "react";
-import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
-import PeopleIcon from "@mui/icons-material/People";
-import { WorkspaceDrawerHeader } from "../layouts/WorkspaceLayout";
+import { useDispatch } from "react-redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { COLLAPESED_DRAWER_WIDTH, DRAWER_WIDTH } from "../../constants/layout";
-import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
-import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
+import { COLLAPSED_DRAWER_WIDTH, DRAWER_WIDTH } from "../../constants/layout";
 import { setDrawerOpen } from "../../store/configSlice";
+import { WorkspaceDrawerHeader } from "../layouts/WorkspaceLayout";
 
 interface WorkspaceDrawerProps {
 	open: boolean;
@@ -64,7 +64,7 @@ function WorkspaceDrawer(props: WorkspaceDrawerProps) {
 
 	return (
 		<Box>
-			<Box sx={{ width: open ? DRAWER_WIDTH : COLLAPESED_DRAWER_WIDTH }} />
+			<Box sx={{ width: open ? DRAWER_WIDTH : COLLAPSED_DRAWER_WIDTH }} />
 			<Paper
 				sx={{
 					position: "fixed",
@@ -77,7 +77,7 @@ function WorkspaceDrawer(props: WorkspaceDrawerProps) {
 				<Collapse
 					orientation="horizontal"
 					in={hovered || open}
-					collapsedSize={COLLAPESED_DRAWER_WIDTH}
+					collapsedSize={COLLAPSED_DRAWER_WIDTH}
 				>
 					<Box
 						sx={{
