@@ -1,0 +1,40 @@
+port: 3000
+
+auth:
+  github:
+    client_id: "your_client_id"
+    client_secret: "your_client_secret"
+    callback_url: "http://localhost:3000/auth/login/github"
+    authorization_url: "https://github.com/login/oauth/authorize"
+    token_url: "https://github.com/login/oauth/access_token"
+    user_profile_url: "https://api.github.com/user"
+  frontend_base_url: "http://localhost:5173"
+
+jwt:
+  access_token_secret: "your_access_token_secret"
+  access_token_expiration_time: "1d"
+  refresh_token_secret: "your_refresh_token_secret"
+  refresh_token_expiration_time: "7d"
+
+yorkie:
+  api_addr: "http://localhost:8080"
+  project_name: "default"
+  project_secret_key: ""
+
+mongo:
+  database_url: "mongodb://localhost:27017/codepair"
+
+storage:
+  provider: "minio"       # or "s3"
+
+  minio:
+    bucket: "default-storage"
+    endpoint: "http://localhost:9000"
+    access_key: "minioadmin"
+    secret_key: "minioadmin"
+
+  s3:
+    bucket: "default-storage"
+    region: "us-east-1"
+    access_key: "aws_access_key"
+    secret_key: "aws_secret_key"
